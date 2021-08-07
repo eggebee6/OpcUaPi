@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<opc:ModelDesign
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
+  xmlns:ua="http://opcfoundation.org/UA/"
+  xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns="http://mkecybertech.com/UA/Pi/SenseHat"
+  TargetNamespace="http://mkecybertech.com/UA/Pi/SenseHat"
+>
+  <opc:Namespaces>
+    <opc:Namespace Name="OpcUa" Prefix="Opc.Ua" InternalPrefix="Opc.Ua.Server" XmlNamespace="http://opcfoundation.org/UA/2008/02/Types.xsd">http://opcfoundation.org/UA/</opc:Namespace>
+    <opc:Namespace Name="SenseHat" Prefix="PiServer.Nodes.SenseHat">http://mkecybertech.com/UA/Pi/SenseHat</opc:Namespace>
+  </opc:Namespaces>
+
+  <opc:ObjectType SymbolicName="GenericSensorType" BaseType="ua:BaseObjectType">
+    <opc:Description>A sensor with a single output</opc:Description>
+    <opc:Children>
+      <opc:Variable SymbolicName="Output" DataType="ua:Double" AccessLevel="Read">
+        <opc:Description>Sensor output value</opc:Description>
+      </opc:Variable>
+      <opc:Property SymbolicName="Units" DataType="ua:String" AccessLevel="Read">
+        <opc:Description>Sensor units</opc:Description>
+      </opc:Property>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="GenericSensor3DType" BaseType="ua:BaseObjectType">
+    <opc:Description>A 3D sensor with X, Y, and Z outputs</opc:Description>
+    <opc:Children>
+      <opc:Variable SymbolicName="X" DataType="ua:Double" AccessLevel="Read">
+        <opc:Description>X-axis output</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Y" DataType="ua:Double" AccessLevel="Read">
+        <opc:Description>Y-axis output</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Z" DataType="ua:Double" AccessLevel="Read">
+        <opc:Description>Z-axis output</opc:Description>
+      </opc:Variable>
+      <opc:Property SymbolicName="Units" DataType="ua:String" AccessLevel="Read">
+        <opc:Description>Sensor units</opc:Description>
+      </opc:Property>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="JoystickType" BaseType="ua:BaseObjectType">
+    <opc:Description>A joystick with four directional switches and a pushbutton</opc:Description>
+    <opc:Children>
+      <opc:Variable SymbolicName="Up" DataType="ua:Boolean" AccessLevel="Read">
+        <opc:Description>Up direction</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Down" DataType="ua:Boolean" AccessLevel="Read">
+        <opc:Description>Down direction</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Left" DataType="ua:Boolean" AccessLevel="Read">
+        <opc:Description>Left direction</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Right" DataType="ua:Boolean" AccessLevel="Read">
+        <opc:Description>Right direction</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Pushbutton" DataType="ua:Boolean" AccessLevel="Read">
+        <opc:Description>Pushbutton</opc:Description>
+      </opc:Variable>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:Method SymbolicName="SetRGBLEDColor" ModellingRule="Mandatory">
+    <opc:InputArguments>
+      <opc:Argument Name="Red" DataType="ua:Byte" />
+      <opc:Argument Name="Green" DataType="ua:Byte" />
+      <opc:Argument Name="Blue" DataType="ua:Byte" />
+    </opc:InputArguments>
+  </opc:Method>
+  
+  <opc:ObjectType SymbolicName="RGBLEDType" BaseType="ua:BaseObjectType">
+    <opc:Description>An RGB LED</opc:Description>
+    <opc:Children>
+      <opc:Variable SymbolicName="Red" DataType="ua:Byte" AccessLevel="Read">
+        <opc:Description>Red intensity</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Green" DataType="ua:Byte" AccessLevel="Read">
+        <opc:Description>Green intensity</opc:Description>
+      </opc:Variable>
+      <opc:Variable SymbolicName="Blue" DataType="ua:Byte" AccessLevel="Read">
+        <opc:Description>Blue intensity</opc:Description>
+      </opc:Variable>
+      <opc:Method SymbolicName="SetColor" TypeDefinition="SetRGBLEDColor">
+        <opc:Description>Set the LED color</opc:Description>
+      </opc:Method>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="SenseHat" BaseType="ua:BaseObjectType">
+    <opc:Description>SenseHat</opc:Description>
+
+    <opc:Children>
+      <opc:Object SymbolicName="Temperature" TypeDefinition="GenericSensorType">
+        <opc:BrowseName>Temperature sensor</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="Pressure" TypeDefinition="GenericSensorType">
+        <opc:BrowseName>Pressure sensor</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="Humidity" TypeDefinition="GenericSensorType">
+        <opc:BrowseName>Humidity sensor</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="Magnetometer" TypeDefinition="GenericSensor3DType">
+        <opc:BrowseName>Magnetometer</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="Accelerometer" TypeDefinition="GenericSensor3DType">
+        <opc:BrowseName>Accelerometer</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="AngularRate" TypeDefinition="GenericSensor3DType">
+        <opc:BrowseName>Angular rate sensor</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="Joystick" TypeDefinition="JoystickType">
+        <opc:BrowseName>Four-direction joystick with pushbutton</opc:BrowseName>
+      </opc:Object>
+
+      <opc:Object SymbolicName="LED" TypeDefinition="RGBLEDType">
+        <opc:BrowseName>RGB LED</opc:BrowseName>
+      </opc:Object>
+    </opc:Children>
+
+  </opc:ObjectType>
+
+</opc:ModelDesign>
