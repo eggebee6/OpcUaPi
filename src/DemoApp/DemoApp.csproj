@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PiServer\PiServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Configuration\PiServer.Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
