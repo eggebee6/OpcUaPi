@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using PiServer;
 using PiServer.Nodes.SenseHat;
 using System;
@@ -8,10 +9,12 @@ namespace DemoApp
 {
   class Program
   {
+    private static ILogger<Program> logger = NullLogger<Program>.Instance;
+
     static void Main(string[] args)
     {
       var loggerFactory = LoggerFactory.Create(configure => configure.AddConsole());
-      var logger = loggerFactory.CreateLogger<Program>();
+      logger = loggerFactory.CreateLogger<Program>();
 
       ISenseHat senseHat = CreateSenseHat(loggerFactory.CreateLogger<ISenseHat>());
 
@@ -49,7 +52,15 @@ namespace DemoApp
 
     private static ISenseHat CreateSenseHat(ILogger<ISenseHat> logger)
     {
-      return new SenseHatSimulated(logger);
+      try
+      {
+        return new SenseHatDevice(logger);
+      }
+      catch (Exception)
+      {
+        logger.LogWarning("Failed to create SenseHat device, using simulated SenseHat");
+        return new SenseHatSimulated(logger);
+      }
     }
   }
 }
