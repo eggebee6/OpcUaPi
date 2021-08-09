@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace DemoApp
+namespace DemoServer
 {
   public class SenseHatSimulated : ISenseHat
   {

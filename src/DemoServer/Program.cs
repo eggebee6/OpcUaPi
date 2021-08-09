@@ -5,7 +5,7 @@ using PiServer.Nodes.SenseHat;
 using System;
 using System.Threading;
 
-namespace DemoApp
+namespace DemoServer
 {
   class Program
   {
