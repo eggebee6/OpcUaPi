@@ -15,6 +15,7 @@ namespace PiClient
     private bool AutoAccept { get; }
     private ILogger<OpcUaPiClient> Logger { get; }
 
+    public Session Session => opcSession;
     private Session opcSession;
     private SessionReconnectHandler reconnectHandler;
     private const int reconnectPeriod = 10;
@@ -78,6 +79,12 @@ namespace PiClient
         null);
 
       client.opcSession.KeepAlive += client.KeepAlive;
+    }
+
+    public static Task StopClient(OpcUaPiClient client)
+    {
+      client.opcSession.CloseSession(null, true);
+      return Task.CompletedTask;
     }
 
     private void KeepAlive(Session session, KeepAliveEventArgs e)
