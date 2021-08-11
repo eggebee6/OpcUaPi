@@ -369,7 +369,6 @@ namespace PiServer
     {
       if (e.Error.StatusCode == StatusCodes.BadCertificateUntrusted)
       {
-        bool AutoAccept = true;
         e.Accept = AutoAccept;
         if (AutoAccept)
         {
