@@ -142,7 +142,6 @@ namespace PiServer
         AddPredefinedNode(SystemContext, SenseHatNode);
 
         InitializeSenseHatNode(SenseHatNode);
-        sensorUpdateTimer = new Timer(UpdateSensorReadings, null, 0, SenseHat.SensorUpdateRate);
       }
     }
 
@@ -154,9 +153,6 @@ namespace PiServer
       lock (Lock)
       {
         base.DeleteAddressSpace();
-
-        sensorUpdateTimer.Dispose();
-        sensorUpdateTimer = null;
       }
     }
 
@@ -229,43 +225,111 @@ namespace PiServer
       node.Accelerometer.Units.Value = SenseHat.AccelerometerUnits;
       node.AngularRate.Units.Value = SenseHat.AngularRateUnits;
 
+      SenseHat.AccelerometerChanged += SenseHat_AccelerometerChanged;
+      SenseHat.AngularRateChanged += SenseHat_AngularRateChanged;
+      SenseHat.HumidityChanged += SenseHat_HumidityChanged;
+      SenseHat.JoystickChanged += SenseHat_JoystickChanged;
+      SenseHat.MagnetometerChanged += SenseHat_MagnetometerChanged;
+      SenseHat.PressureChanged += SenseHat_PressureChanged;
+      SenseHat.TemperatureChanged += SenseHat_TemperatureChanged;
+
       node.LED.SetColor.OnCall = SetLEDColor;
     }
 
-    public void UpdateSensorReadings(object state)
+    private void SenseHat_TemperatureChanged(object sender, EventArgs e)
     {
       try
       {
         SenseHatNode.Temperature.Output.Value = SenseHat.Temperature();
-        SenseHatNode.Pressure.Output.Value = SenseHat.Pressure();
-        SenseHatNode.Humidity.Output.Value = SenseHat.Humidity();
+        SenseHatNode.ClearChangeMasks(SystemContext, true);
+      }
+      catch (Exception)
+      {
+      }
+    }
 
+    private void SenseHat_PressureChanged(object sender, EventArgs e)
+    {
+      try
+      {
+        SenseHatNode.Pressure.Output.Value = SenseHat.Pressure();
+        SenseHatNode.ClearChangeMasks(SystemContext, true);
+      }
+      catch (Exception)
+      {
+      }
+    }
+
+    private void SenseHat_MagnetometerChanged(object sender, EventArgs e)
+    {
+      try
+      {
         var mag = SenseHat.Magnetometer();
         SenseHatNode.Magnetometer.X.Value = mag.X;
         SenseHatNode.Magnetometer.Y.Value = mag.Y;
         SenseHatNode.Magnetometer.Z.Value = mag.Z;
+        SenseHatNode.ClearChangeMasks(SystemContext, true);
+      }
+      catch (Exception)
+      {
+      }
+    }
 
-        var accel = SenseHat.Accelerometer();
-        SenseHatNode.Accelerometer.X.Value = accel.X;
-        SenseHatNode.Accelerometer.Y.Value = accel.Y;
-        SenseHatNode.Accelerometer.Z.Value = accel.Z;
-
-        var angular = SenseHat.AngularRate();
-        SenseHatNode.AngularRate.X.Value = angular.X;
-        SenseHatNode.AngularRate.Y.Value = angular.Y;
-        SenseHatNode.AngularRate.Z.Value = angular.Z;
-
+    private void SenseHat_JoystickChanged(object sender, EventArgs e)
+    {
+      try
+      {
         SenseHatNode.Joystick.Up.Value = SenseHat.JoystickUp();
         SenseHatNode.Joystick.Down.Value = SenseHat.JoystickDown();
         SenseHatNode.Joystick.Left.Value = SenseHat.JoystickLeft();
         SenseHatNode.Joystick.Right.Value = SenseHat.JoystickRight();
         SenseHatNode.Joystick.Pushbutton.Value = SenseHat.JoystickPushbutton();
-
         SenseHatNode.ClearChangeMasks(SystemContext, true);
       }
-      catch
+      catch (Exception)
       {
-        // TODO: Handle sensor update error
+      }
+    }
+
+    private void SenseHat_HumidityChanged(object sender, EventArgs e)
+    {
+      try
+      {
+        SenseHatNode.Humidity.Output.Value = SenseHat.Humidity();
+        SenseHatNode.ClearChangeMasks(SystemContext, true);
+      }
+      catch (Exception)
+      {
+      }
+    }
+
+    private void SenseHat_AngularRateChanged(object sender, EventArgs e)
+    {
+      try
+      {
+        var angular = SenseHat.AngularRate();
+        SenseHatNode.AngularRate.X.Value = angular.X;
+        SenseHatNode.AngularRate.Y.Value = angular.Y;
+        SenseHatNode.AngularRate.Z.Value = angular.Z;
+        SenseHatNode.ClearChangeMasks(SystemContext, true);
+      }
+      catch (Exception)
+      {
+      }
+    }
+
+    private void SenseHat_AccelerometerChanged(object sender, EventArgs e)
+    {
+      try
+      {
+        var accel = SenseHat.Accelerometer();
+        SenseHatNode.Accelerometer.X.Value = accel.X;
+        SenseHatNode.Accelerometer.Y.Value = accel.Y;
+        SenseHatNode.Accelerometer.Z.Value = accel.Z;
+        SenseHatNode.ClearChangeMasks(SystemContext, true);
+      }
+      catch (Exception)
+      {
       }
     }
 
@@ -297,7 +361,6 @@ namespace PiServer
     private ISenseHat SenseHat;
 
     private SenseHatState SenseHatNode;
-    private Timer sensorUpdateTimer;
     #endregion
   }
 }

@@ -10,13 +10,22 @@ namespace DemoServer
 {
   class SenseHatDevice : ISenseHat
   {
-    private ILogger<ISenseHat> Logger { get; }
+    private ILogger<ISenseHat> logger { get; }
+    private Timer updateTimer;
 
     private readonly Iot.Device.SenseHat.SenseHat senseHat;
 
+    public event EventHandler TemperatureChanged;
+    public event EventHandler PressureChanged;
+    public event EventHandler HumidityChanged;
+    public event EventHandler MagnetometerChanged;
+    public event EventHandler AccelerometerChanged;
+    public event EventHandler AngularRateChanged;
+    public event EventHandler JoystickChanged;
+
     public SenseHatDevice(ILogger<ISenseHat> logger)
     {
-      Logger = logger;
+      this.logger = logger;
 
       senseHat = new Iot.Device.SenseHat.SenseHat();
       if (senseHat is null)
@@ -24,14 +33,25 @@ namespace DemoServer
         Log("Failed to create SenseHat device object");
         throw new Exception("Failed to create SenseHAT device object");
       }
+
+      updateTimer = new Timer(InvokeUpdates, null, 500, 500);
     }
 
     private void Log(string msg)
     {
-      Logger?.LogInformation(msg);
+      logger?.LogInformation(msg);
     }
 
-    public int SensorUpdateRate => 500;
+    private void InvokeUpdates(object state)
+    {
+      TemperatureChanged?.Invoke(null, null);
+      PressureChanged?.Invoke(null, null);
+      HumidityChanged?.Invoke(null, null);
+      MagnetometerChanged?.Invoke(null, null);
+      AccelerometerChanged?.Invoke(null, null);
+      AngularRateChanged?.Invoke(null, null);
+      JoystickChanged?.Invoke(null, null);
+    }
 
     public string TemperatureUnits => "Celsius";
     public double Temperature() =>
