@@ -48,17 +48,17 @@ namespace PiServer.Nodes.SenseHat
         /// <summary>
         /// The identifier for the SetRGBLEDColor Method.
         /// </summary>
-        public const uint SetRGBLEDColor = 15;
+        public const uint SetRGBLEDColor = 26;
 
         /// <summary>
         /// The identifier for the RGBLEDType_SetColor Method.
         /// </summary>
-        public const uint RGBLEDType_SetColor = 21;
+        public const uint RGBLEDType_SetColor = 32;
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_SetColor Method.
+        /// The identifier for the SenseHatType_LED_SetColor Method.
         /// </summary>
-        public const uint SenseHat_LED_SetColor = 58;
+        public const uint SenseHatType_LED_SetColor = 69;
     }
     #endregion
 
@@ -71,44 +71,44 @@ namespace PiServer.Nodes.SenseHat
     public static partial class Objects
     {
         /// <summary>
-        /// The identifier for the SenseHat_Temperature Object.
+        /// The identifier for the SenseHatType_Temperature Object.
         /// </summary>
-        public const uint SenseHat_Temperature = 24;
+        public const uint SenseHatType_Temperature = 35;
 
         /// <summary>
-        /// The identifier for the SenseHat_Pressure Object.
+        /// The identifier for the SenseHatType_Pressure Object.
         /// </summary>
-        public const uint SenseHat_Pressure = 27;
+        public const uint SenseHatType_Pressure = 38;
 
         /// <summary>
-        /// The identifier for the SenseHat_Humidity Object.
+        /// The identifier for the SenseHatType_Humidity Object.
         /// </summary>
-        public const uint SenseHat_Humidity = 30;
+        public const uint SenseHatType_Humidity = 41;
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer Object.
+        /// The identifier for the SenseHatType_Magnetometer Object.
         /// </summary>
-        public const uint SenseHat_Magnetometer = 33;
+        public const uint SenseHatType_Magnetometer = 44;
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer Object.
+        /// The identifier for the SenseHatType_Accelerometer Object.
         /// </summary>
-        public const uint SenseHat_Accelerometer = 38;
+        public const uint SenseHatType_Accelerometer = 49;
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate Object.
+        /// The identifier for the SenseHatType_AngularRate Object.
         /// </summary>
-        public const uint SenseHat_AngularRate = 43;
+        public const uint SenseHatType_AngularRate = 54;
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick Object.
+        /// The identifier for the SenseHatType_Joystick Object.
         /// </summary>
-        public const uint SenseHat_Joystick = 48;
+        public const uint SenseHatType_Joystick = 59;
 
         /// <summary>
-        /// The identifier for the SenseHat_LED Object.
+        /// The identifier for the SenseHatType_LED Object.
         /// </summary>
-        public const uint SenseHat_LED = 54;
+        public const uint SenseHatType_LED = 65;
     }
     #endregion
 
@@ -131,19 +131,24 @@ namespace PiServer.Nodes.SenseHat
         public const uint GenericSensor3DType = 4;
 
         /// <summary>
+        /// The identifier for the PushbuttonEventType ObjectType.
+        /// </summary>
+        public const uint PushbuttonEventType = 9;
+
+        /// <summary>
         /// The identifier for the JoystickType ObjectType.
         /// </summary>
-        public const uint JoystickType = 9;
+        public const uint JoystickType = 20;
 
         /// <summary>
         /// The identifier for the RGBLEDType ObjectType.
         /// </summary>
-        public const uint RGBLEDType = 17;
+        public const uint RGBLEDType = 28;
 
         /// <summary>
-        /// The identifier for the SenseHat ObjectType.
+        /// The identifier for the SenseHatType ObjectType.
         /// </summary>
-        public const uint SenseHat = 23;
+        public const uint SenseHatType = 34;
     }
     #endregion
 
@@ -186,189 +191,194 @@ namespace PiServer.Nodes.SenseHat
         public const uint GenericSensor3DType_Units = 8;
 
         /// <summary>
+        /// The identifier for the PushbuttonEventType_PushbuttonState Variable.
+        /// </summary>
+        public const uint PushbuttonEventType_PushbuttonState = 19;
+
+        /// <summary>
         /// The identifier for the JoystickType_Up Variable.
         /// </summary>
-        public const uint JoystickType_Up = 10;
+        public const uint JoystickType_Up = 21;
 
         /// <summary>
         /// The identifier for the JoystickType_Down Variable.
         /// </summary>
-        public const uint JoystickType_Down = 11;
+        public const uint JoystickType_Down = 22;
 
         /// <summary>
         /// The identifier for the JoystickType_Left Variable.
         /// </summary>
-        public const uint JoystickType_Left = 12;
+        public const uint JoystickType_Left = 23;
 
         /// <summary>
         /// The identifier for the JoystickType_Right Variable.
         /// </summary>
-        public const uint JoystickType_Right = 13;
+        public const uint JoystickType_Right = 24;
 
         /// <summary>
         /// The identifier for the JoystickType_Pushbutton Variable.
         /// </summary>
-        public const uint JoystickType_Pushbutton = 14;
+        public const uint JoystickType_Pushbutton = 25;
 
         /// <summary>
         /// The identifier for the SetRGBLEDColor_InputArguments Variable.
         /// </summary>
-        public const uint SetRGBLEDColor_InputArguments = 16;
+        public const uint SetRGBLEDColor_InputArguments = 27;
 
         /// <summary>
         /// The identifier for the RGBLEDType_Red Variable.
         /// </summary>
-        public const uint RGBLEDType_Red = 18;
+        public const uint RGBLEDType_Red = 29;
 
         /// <summary>
         /// The identifier for the RGBLEDType_Green Variable.
         /// </summary>
-        public const uint RGBLEDType_Green = 19;
+        public const uint RGBLEDType_Green = 30;
 
         /// <summary>
         /// The identifier for the RGBLEDType_Blue Variable.
         /// </summary>
-        public const uint RGBLEDType_Blue = 20;
+        public const uint RGBLEDType_Blue = 31;
 
         /// <summary>
         /// The identifier for the RGBLEDType_SetColor_InputArguments Variable.
         /// </summary>
-        public const uint RGBLEDType_SetColor_InputArguments = 22;
+        public const uint RGBLEDType_SetColor_InputArguments = 33;
 
         /// <summary>
-        /// The identifier for the SenseHat_Temperature_Output Variable.
+        /// The identifier for the SenseHatType_Temperature_Output Variable.
         /// </summary>
-        public const uint SenseHat_Temperature_Output = 25;
+        public const uint SenseHatType_Temperature_Output = 36;
 
         /// <summary>
-        /// The identifier for the SenseHat_Temperature_Units Variable.
+        /// The identifier for the SenseHatType_Temperature_Units Variable.
         /// </summary>
-        public const uint SenseHat_Temperature_Units = 26;
+        public const uint SenseHatType_Temperature_Units = 37;
 
         /// <summary>
-        /// The identifier for the SenseHat_Pressure_Output Variable.
+        /// The identifier for the SenseHatType_Pressure_Output Variable.
         /// </summary>
-        public const uint SenseHat_Pressure_Output = 28;
+        public const uint SenseHatType_Pressure_Output = 39;
 
         /// <summary>
-        /// The identifier for the SenseHat_Pressure_Units Variable.
+        /// The identifier for the SenseHatType_Pressure_Units Variable.
         /// </summary>
-        public const uint SenseHat_Pressure_Units = 29;
+        public const uint SenseHatType_Pressure_Units = 40;
 
         /// <summary>
-        /// The identifier for the SenseHat_Humidity_Output Variable.
+        /// The identifier for the SenseHatType_Humidity_Output Variable.
         /// </summary>
-        public const uint SenseHat_Humidity_Output = 31;
+        public const uint SenseHatType_Humidity_Output = 42;
 
         /// <summary>
-        /// The identifier for the SenseHat_Humidity_Units Variable.
+        /// The identifier for the SenseHatType_Humidity_Units Variable.
         /// </summary>
-        public const uint SenseHat_Humidity_Units = 32;
+        public const uint SenseHatType_Humidity_Units = 43;
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_X Variable.
+        /// The identifier for the SenseHatType_Magnetometer_X Variable.
         /// </summary>
-        public const uint SenseHat_Magnetometer_X = 34;
+        public const uint SenseHatType_Magnetometer_X = 45;
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_Y Variable.
+        /// The identifier for the SenseHatType_Magnetometer_Y Variable.
         /// </summary>
-        public const uint SenseHat_Magnetometer_Y = 35;
+        public const uint SenseHatType_Magnetometer_Y = 46;
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_Z Variable.
+        /// The identifier for the SenseHatType_Magnetometer_Z Variable.
         /// </summary>
-        public const uint SenseHat_Magnetometer_Z = 36;
+        public const uint SenseHatType_Magnetometer_Z = 47;
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_Units Variable.
+        /// The identifier for the SenseHatType_Magnetometer_Units Variable.
         /// </summary>
-        public const uint SenseHat_Magnetometer_Units = 37;
+        public const uint SenseHatType_Magnetometer_Units = 48;
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_X Variable.
+        /// The identifier for the SenseHatType_Accelerometer_X Variable.
         /// </summary>
-        public const uint SenseHat_Accelerometer_X = 39;
+        public const uint SenseHatType_Accelerometer_X = 50;
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_Y Variable.
+        /// The identifier for the SenseHatType_Accelerometer_Y Variable.
         /// </summary>
-        public const uint SenseHat_Accelerometer_Y = 40;
+        public const uint SenseHatType_Accelerometer_Y = 51;
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_Z Variable.
+        /// The identifier for the SenseHatType_Accelerometer_Z Variable.
         /// </summary>
-        public const uint SenseHat_Accelerometer_Z = 41;
+        public const uint SenseHatType_Accelerometer_Z = 52;
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_Units Variable.
+        /// The identifier for the SenseHatType_Accelerometer_Units Variable.
         /// </summary>
-        public const uint SenseHat_Accelerometer_Units = 42;
+        public const uint SenseHatType_Accelerometer_Units = 53;
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_X Variable.
+        /// The identifier for the SenseHatType_AngularRate_X Variable.
         /// </summary>
-        public const uint SenseHat_AngularRate_X = 44;
+        public const uint SenseHatType_AngularRate_X = 55;
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_Y Variable.
+        /// The identifier for the SenseHatType_AngularRate_Y Variable.
         /// </summary>
-        public const uint SenseHat_AngularRate_Y = 45;
+        public const uint SenseHatType_AngularRate_Y = 56;
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_Z Variable.
+        /// The identifier for the SenseHatType_AngularRate_Z Variable.
         /// </summary>
-        public const uint SenseHat_AngularRate_Z = 46;
+        public const uint SenseHatType_AngularRate_Z = 57;
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_Units Variable.
+        /// The identifier for the SenseHatType_AngularRate_Units Variable.
         /// </summary>
-        public const uint SenseHat_AngularRate_Units = 47;
+        public const uint SenseHatType_AngularRate_Units = 58;
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Up Variable.
+        /// The identifier for the SenseHatType_Joystick_Up Variable.
         /// </summary>
-        public const uint SenseHat_Joystick_Up = 49;
+        public const uint SenseHatType_Joystick_Up = 60;
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Down Variable.
+        /// The identifier for the SenseHatType_Joystick_Down Variable.
         /// </summary>
-        public const uint SenseHat_Joystick_Down = 50;
+        public const uint SenseHatType_Joystick_Down = 61;
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Left Variable.
+        /// The identifier for the SenseHatType_Joystick_Left Variable.
         /// </summary>
-        public const uint SenseHat_Joystick_Left = 51;
+        public const uint SenseHatType_Joystick_Left = 62;
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Right Variable.
+        /// The identifier for the SenseHatType_Joystick_Right Variable.
         /// </summary>
-        public const uint SenseHat_Joystick_Right = 52;
+        public const uint SenseHatType_Joystick_Right = 63;
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Pushbutton Variable.
+        /// The identifier for the SenseHatType_Joystick_Pushbutton Variable.
         /// </summary>
-        public const uint SenseHat_Joystick_Pushbutton = 53;
+        public const uint SenseHatType_Joystick_Pushbutton = 64;
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_Red Variable.
+        /// The identifier for the SenseHatType_LED_Red Variable.
         /// </summary>
-        public const uint SenseHat_LED_Red = 55;
+        public const uint SenseHatType_LED_Red = 66;
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_Green Variable.
+        /// The identifier for the SenseHatType_LED_Green Variable.
         /// </summary>
-        public const uint SenseHat_LED_Green = 56;
+        public const uint SenseHatType_LED_Green = 67;
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_Blue Variable.
+        /// The identifier for the SenseHatType_LED_Blue Variable.
         /// </summary>
-        public const uint SenseHat_LED_Blue = 57;
+        public const uint SenseHatType_LED_Blue = 68;
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_SetColor_InputArguments Variable.
+        /// The identifier for the SenseHatType_LED_SetColor_InputArguments Variable.
         /// </summary>
-        public const uint SenseHat_LED_SetColor_InputArguments = 59;
+        public const uint SenseHatType_LED_SetColor_InputArguments = 70;
     }
     #endregion
 
@@ -391,9 +401,9 @@ namespace PiServer.Nodes.SenseHat
         public static readonly ExpandedNodeId RGBLEDType_SetColor = new ExpandedNodeId(PiServer.Nodes.SenseHat.Methods.RGBLEDType_SetColor, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_SetColor Method.
+        /// The identifier for the SenseHatType_LED_SetColor Method.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_LED_SetColor = new ExpandedNodeId(PiServer.Nodes.SenseHat.Methods.SenseHat_LED_SetColor, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_LED_SetColor = new ExpandedNodeId(PiServer.Nodes.SenseHat.Methods.SenseHatType_LED_SetColor, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
     }
     #endregion
 
@@ -406,44 +416,44 @@ namespace PiServer.Nodes.SenseHat
     public static partial class ObjectIds
     {
         /// <summary>
-        /// The identifier for the SenseHat_Temperature Object.
+        /// The identifier for the SenseHatType_Temperature Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Temperature = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_Temperature, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Temperature = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_Temperature, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Pressure Object.
+        /// The identifier for the SenseHatType_Pressure Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Pressure = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_Pressure, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Pressure = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_Pressure, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Humidity Object.
+        /// The identifier for the SenseHatType_Humidity Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Humidity = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_Humidity, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Humidity = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_Humidity, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer Object.
+        /// The identifier for the SenseHatType_Magnetometer Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Magnetometer = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_Magnetometer, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Magnetometer = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_Magnetometer, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer Object.
+        /// The identifier for the SenseHatType_Accelerometer Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Accelerometer = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_Accelerometer, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Accelerometer = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_Accelerometer, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate Object.
+        /// The identifier for the SenseHatType_AngularRate Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_AngularRate = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_AngularRate, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_AngularRate = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_AngularRate, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick Object.
+        /// The identifier for the SenseHatType_Joystick Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Joystick = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_Joystick, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Joystick = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_Joystick, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_LED Object.
+        /// The identifier for the SenseHatType_LED Object.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_LED = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHat_LED, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_LED = new ExpandedNodeId(PiServer.Nodes.SenseHat.Objects.SenseHatType_LED, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
     }
     #endregion
 
@@ -466,6 +476,11 @@ namespace PiServer.Nodes.SenseHat
         public static readonly ExpandedNodeId GenericSensor3DType = new ExpandedNodeId(PiServer.Nodes.SenseHat.ObjectTypes.GenericSensor3DType, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
+        /// The identifier for the PushbuttonEventType ObjectType.
+        /// </summary>
+        public static readonly ExpandedNodeId PushbuttonEventType = new ExpandedNodeId(PiServer.Nodes.SenseHat.ObjectTypes.PushbuttonEventType, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+
+        /// <summary>
         /// The identifier for the JoystickType ObjectType.
         /// </summary>
         public static readonly ExpandedNodeId JoystickType = new ExpandedNodeId(PiServer.Nodes.SenseHat.ObjectTypes.JoystickType, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
@@ -476,9 +491,9 @@ namespace PiServer.Nodes.SenseHat
         public static readonly ExpandedNodeId RGBLEDType = new ExpandedNodeId(PiServer.Nodes.SenseHat.ObjectTypes.RGBLEDType, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat ObjectType.
+        /// The identifier for the SenseHatType ObjectType.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat = new ExpandedNodeId(PiServer.Nodes.SenseHat.ObjectTypes.SenseHat, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType = new ExpandedNodeId(PiServer.Nodes.SenseHat.ObjectTypes.SenseHatType, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
     }
     #endregion
 
@@ -519,6 +534,11 @@ namespace PiServer.Nodes.SenseHat
         /// The identifier for the GenericSensor3DType_Units Variable.
         /// </summary>
         public static readonly ExpandedNodeId GenericSensor3DType_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.GenericSensor3DType_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+
+        /// <summary>
+        /// The identifier for the PushbuttonEventType_PushbuttonState Variable.
+        /// </summary>
+        public static readonly ExpandedNodeId PushbuttonEventType_PushbuttonState = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.PushbuttonEventType_PushbuttonState, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
         /// The identifier for the JoystickType_Up Variable.
@@ -571,139 +591,139 @@ namespace PiServer.Nodes.SenseHat
         public static readonly ExpandedNodeId RGBLEDType_SetColor_InputArguments = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.RGBLEDType_SetColor_InputArguments, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Temperature_Output Variable.
+        /// The identifier for the SenseHatType_Temperature_Output Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Temperature_Output = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Temperature_Output, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Temperature_Output = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Temperature_Output, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Temperature_Units Variable.
+        /// The identifier for the SenseHatType_Temperature_Units Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Temperature_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Temperature_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Temperature_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Temperature_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Pressure_Output Variable.
+        /// The identifier for the SenseHatType_Pressure_Output Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Pressure_Output = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Pressure_Output, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Pressure_Output = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Pressure_Output, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Pressure_Units Variable.
+        /// The identifier for the SenseHatType_Pressure_Units Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Pressure_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Pressure_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Pressure_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Pressure_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Humidity_Output Variable.
+        /// The identifier for the SenseHatType_Humidity_Output Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Humidity_Output = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Humidity_Output, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Humidity_Output = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Humidity_Output, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Humidity_Units Variable.
+        /// The identifier for the SenseHatType_Humidity_Units Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Humidity_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Humidity_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Humidity_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Humidity_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_X Variable.
+        /// The identifier for the SenseHatType_Magnetometer_X Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Magnetometer_X = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Magnetometer_X, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Magnetometer_X = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Magnetometer_X, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_Y Variable.
+        /// The identifier for the SenseHatType_Magnetometer_Y Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Magnetometer_Y = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Magnetometer_Y, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Magnetometer_Y = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Magnetometer_Y, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_Z Variable.
+        /// The identifier for the SenseHatType_Magnetometer_Z Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Magnetometer_Z = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Magnetometer_Z, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Magnetometer_Z = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Magnetometer_Z, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Magnetometer_Units Variable.
+        /// The identifier for the SenseHatType_Magnetometer_Units Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Magnetometer_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Magnetometer_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Magnetometer_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Magnetometer_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_X Variable.
+        /// The identifier for the SenseHatType_Accelerometer_X Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Accelerometer_X = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Accelerometer_X, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Accelerometer_X = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Accelerometer_X, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_Y Variable.
+        /// The identifier for the SenseHatType_Accelerometer_Y Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Accelerometer_Y = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Accelerometer_Y, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Accelerometer_Y = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Accelerometer_Y, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_Z Variable.
+        /// The identifier for the SenseHatType_Accelerometer_Z Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Accelerometer_Z = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Accelerometer_Z, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Accelerometer_Z = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Accelerometer_Z, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Accelerometer_Units Variable.
+        /// The identifier for the SenseHatType_Accelerometer_Units Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Accelerometer_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Accelerometer_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Accelerometer_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Accelerometer_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_X Variable.
+        /// The identifier for the SenseHatType_AngularRate_X Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_AngularRate_X = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_AngularRate_X, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_AngularRate_X = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_AngularRate_X, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_Y Variable.
+        /// The identifier for the SenseHatType_AngularRate_Y Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_AngularRate_Y = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_AngularRate_Y, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_AngularRate_Y = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_AngularRate_Y, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_Z Variable.
+        /// The identifier for the SenseHatType_AngularRate_Z Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_AngularRate_Z = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_AngularRate_Z, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_AngularRate_Z = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_AngularRate_Z, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_AngularRate_Units Variable.
+        /// The identifier for the SenseHatType_AngularRate_Units Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_AngularRate_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_AngularRate_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_AngularRate_Units = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_AngularRate_Units, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Up Variable.
+        /// The identifier for the SenseHatType_Joystick_Up Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Joystick_Up = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Joystick_Up, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Joystick_Up = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Joystick_Up, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Down Variable.
+        /// The identifier for the SenseHatType_Joystick_Down Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Joystick_Down = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Joystick_Down, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Joystick_Down = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Joystick_Down, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Left Variable.
+        /// The identifier for the SenseHatType_Joystick_Left Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Joystick_Left = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Joystick_Left, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Joystick_Left = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Joystick_Left, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Right Variable.
+        /// The identifier for the SenseHatType_Joystick_Right Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Joystick_Right = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Joystick_Right, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Joystick_Right = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Joystick_Right, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_Joystick_Pushbutton Variable.
+        /// The identifier for the SenseHatType_Joystick_Pushbutton Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_Joystick_Pushbutton = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_Joystick_Pushbutton, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_Joystick_Pushbutton = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_Joystick_Pushbutton, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_Red Variable.
+        /// The identifier for the SenseHatType_LED_Red Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_LED_Red = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_LED_Red, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_LED_Red = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_LED_Red, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_Green Variable.
+        /// The identifier for the SenseHatType_LED_Green Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_LED_Green = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_LED_Green, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_LED_Green = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_LED_Green, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_Blue Variable.
+        /// The identifier for the SenseHatType_LED_Blue Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_LED_Blue = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_LED_Blue, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_LED_Blue = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_LED_Blue, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
 
         /// <summary>
-        /// The identifier for the SenseHat_LED_SetColor_InputArguments Variable.
+        /// The identifier for the SenseHatType_LED_SetColor_InputArguments Variable.
         /// </summary>
-        public static readonly ExpandedNodeId SenseHat_LED_SetColor_InputArguments = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHat_LED_SetColor_InputArguments, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
+        public static readonly ExpandedNodeId SenseHatType_LED_SetColor_InputArguments = new ExpandedNodeId(PiServer.Nodes.SenseHat.Variables.SenseHatType_LED_SetColor_InputArguments, PiServer.Nodes.SenseHat.Namespaces.SenseHat);
     }
     #endregion
 
@@ -795,6 +815,16 @@ namespace PiServer.Nodes.SenseHat
         public const string Pushbutton = "Pushbutton";
 
         /// <summary>
+        /// The BrowseName for the PushbuttonEventType component.
+        /// </summary>
+        public const string PushbuttonEventType = "PushbuttonEventType";
+
+        /// <summary>
+        /// The BrowseName for the PushbuttonState component.
+        /// </summary>
+        public const string PushbuttonState = "PushbuttonState";
+
+        /// <summary>
         /// The BrowseName for the Red component.
         /// </summary>
         public const string Red = "Red";
@@ -810,9 +840,9 @@ namespace PiServer.Nodes.SenseHat
         public const string Right = "Right";
 
         /// <summary>
-        /// The BrowseName for the SenseHat component.
+        /// The BrowseName for the SenseHatType component.
         /// </summary>
-        public const string SenseHat = "SenseHat";
+        public const string SenseHatType = "SenseHatType";
 
         /// <summary>
         /// The BrowseName for the SetColor component.

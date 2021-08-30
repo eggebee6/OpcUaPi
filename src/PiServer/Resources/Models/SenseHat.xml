@@ -43,7 +43,14 @@
     </opc:Children>
   </opc:ObjectType>
 
-  <opc:ObjectType SymbolicName="JoystickType" BaseType="ua:BaseObjectType">
+  <opc:ObjectType SymbolicName="PushbuttonEventType" BaseType="ua:BaseEventType">
+    <opc:Description>Raised when a pushbutton changes state</opc:Description>
+    <opc:Children>
+      <opc:Property SymbolicName="PushbuttonState" DataType="ua:Boolean" ModellingRule="Mandatory" />
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="JoystickType" BaseType="ua:BaseObjectType" SupportsEvents="true">
     <opc:Description>A joystick with four directional switches and a pushbutton</opc:Description>
     <opc:Children>
       <opc:Variable SymbolicName="Up" DataType="ua:Boolean" AccessLevel="Read">
@@ -62,6 +69,13 @@
         <opc:Description>Pushbutton</opc:Description>
       </opc:Variable>
     </opc:Children>
+
+    <opc:References>
+      <opc:Reference>
+        <opc:ReferenceType>ua:HasEventSource</opc:ReferenceType>
+        <opc:TargetId>JoystickType_Pushbutton</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
   </opc:ObjectType>
 
   <opc:Method SymbolicName="SetRGBLEDColor" ModellingRule="Mandatory">
@@ -71,7 +85,7 @@
       <opc:Argument Name="Blue" DataType="ua:Byte" />
     </opc:InputArguments>
   </opc:Method>
-  
+
   <opc:ObjectType SymbolicName="RGBLEDType" BaseType="ua:BaseObjectType">
     <opc:Description>An RGB LED</opc:Description>
     <opc:Children>
@@ -90,8 +104,8 @@
     </opc:Children>
   </opc:ObjectType>
 
-  <opc:ObjectType SymbolicName="SenseHat" BaseType="ua:BaseObjectType">
-    <opc:Description>SenseHat</opc:Description>
+  <opc:ObjectType SymbolicName="SenseHatType" BaseType="ua:BaseObjectType" SupportsEvents="true">
+    <opc:Description>SenseHat device</opc:Description>
 
     <opc:Children>
       <opc:Object SymbolicName="Temperature" TypeDefinition="GenericSensorType">
@@ -118,7 +132,7 @@
         <opc:BrowseName>Angular rate sensor</opc:BrowseName>
       </opc:Object>
 
-      <opc:Object SymbolicName="Joystick" TypeDefinition="JoystickType">
+      <opc:Object SymbolicName="Joystick" TypeDefinition="JoystickType" SupportsEvents="true">
         <opc:BrowseName>Four-direction joystick with pushbutton</opc:BrowseName>
       </opc:Object>
 
@@ -126,6 +140,17 @@
         <opc:BrowseName>RGB LED</opc:BrowseName>
       </opc:Object>
     </opc:Children>
+
+    <opc:References>
+      <opc:Reference>
+        <opc:ReferenceType>ua:HasNotifier</opc:ReferenceType>
+        <opc:TargetId>SenseHatType_Joystick</opc:TargetId>
+      </opc:Reference>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:HasNotifier</opc:ReferenceType>
+        <opc:TargetId>ua:Server</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
 
   </opc:ObjectType>
 

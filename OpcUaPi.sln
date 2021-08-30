@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoServer", "src\DemoServe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiClient", "src\PiClient\PiClient.csproj", "{E356C631-45CA-449C-B749-9E1FBD505A20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoClient", "src\DemoClient\DemoClient.csproj", "{9F2D0016-15ED-48D1-9669-E1826F811827}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoClient", "src\DemoClient\DemoClient.csproj", "{9F2D0016-15ED-48D1-9669-E1826F811827}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

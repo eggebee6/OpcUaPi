@@ -110,9 +110,9 @@ namespace PiServer
         LoadPredefinedNodes(SystemContext, externalReferences);
 
         IList<IReference> references = null;
-        if (!externalReferences.TryGetValue(Opc.Ua.ObjectIds.RootFolder, out references))
+        if (!externalReferences.TryGetValue(Opc.Ua.ObjectIds.ObjectsFolder, out references))
         {
-          externalReferences[Opc.Ua.ObjectIds.RootFolder] = references = new List<IReference>();
+          externalReferences[Opc.Ua.ObjectIds.ObjectsFolder] = references = new List<IReference>();
         }
 
         FolderState piFolder = new FolderState(null);
@@ -124,7 +124,7 @@ namespace PiServer
           false);
 
         references.Add(new NodeStateReference(ReferenceTypeIds.Organizes, false, piFolder.NodeId));
-        piFolder.AddReference(Opc.Ua.ReferenceTypeIds.Organizes, true, Opc.Ua.ObjectIds.RootFolder);
+        piFolder.AddReference(ReferenceTypeIds.Organizes, true, Opc.Ua.ObjectIds.ObjectsFolder);
 
         AddPredefinedNode(SystemContext, piFolder);
 
@@ -138,6 +138,9 @@ namespace PiServer
 
         SenseHatNode.AddReference(ReferenceTypeIds.Organizes, true, piFolder.NodeId);
         piFolder.AddReference(ReferenceTypeIds.Organizes, false, SenseHatNode.NodeId);
+
+        SenseHatNode.AddReference(ReferenceTypeIds.HasNotifier, true, piFolder.NodeId);
+        piFolder.AddReference(ReferenceTypeIds.HasNotifier, false, SenseHatNode.NodeId);
 
         AddPredefinedNode(SystemContext, SenseHatNode);
 
@@ -213,6 +216,22 @@ namespace PiServer
     #endregion
 
     #region Overridden Methods
+    /// <summary>
+    /// Loads a node set from a file or resource and addes them to the set of predefined nodes.
+    /// </summary>
+    protected override NodeStateCollection LoadPredefinedNodes(ISystemContext context)
+    {
+      string resourcePrefix = "PiServer.Resources.PredefinedNodes";
+      string resourceName = $"{resourcePrefix}.SenseHat.PredefinedNodes.uanodes";
+
+      Stream fileStream = Assembly.GetAssembly(this.GetType())
+        .GetManifestResourceStream(resourceName);
+
+      NodeStateCollection predefinedNodes = new NodeStateCollection();
+      predefinedNodes.LoadFromBinary(context, fileStream, true);
+
+      return predefinedNodes;
+    }
     #endregion
 
     #region Custom Methods
@@ -229,11 +248,47 @@ namespace PiServer
       SenseHat.AngularRateChanged += SenseHat_AngularRateChanged;
       SenseHat.HumidityChanged += SenseHat_HumidityChanged;
       SenseHat.JoystickChanged += SenseHat_JoystickChanged;
+      SenseHat.JoystickChanged += SenseHat_JoystickEventGenerator;
       SenseHat.MagnetometerChanged += SenseHat_MagnetometerChanged;
       SenseHat.PressureChanged += SenseHat_PressureChanged;
       SenseHat.TemperatureChanged += SenseHat_TemperatureChanged;
 
       node.LED.SetColor.OnCall = SetLEDColor;
+    }
+
+    private void SenseHat_JoystickEventGenerator(object sender, EventArgs e)
+    {
+      try
+      {
+        bool pushbutton = SenseHat.JoystickPushbutton();
+        if (pushbutton != prevPushbuttonState)
+        {
+          var pushbuttonEvent = new PushbuttonEventState(SenseHatNode.Joystick.Pushbutton);
+          pushbuttonEvent.Initialize(
+            SystemContext,
+            SenseHatNode.Joystick.Pushbutton,
+            EventSeverity.Min,
+            pushbutton ? "Button pressed" : "Button released");
+
+          pushbuttonEvent.SetChildValue(
+            SystemContext,
+            Opc.Ua.BrowseNames.SourceName,
+            "SenseHat joystick pushbutton",
+            false);
+          pushbuttonEvent.SetChildValue(
+            SystemContext,
+            new QualifiedName(Nodes.SenseHat.BrowseNames.PushbuttonState, NamespaceIndex),
+            pushbutton,
+            false);
+
+          SenseHatNode.Joystick.Pushbutton.ReportEvent(SystemContext, pushbuttonEvent);
+        }
+
+        prevPushbuttonState = pushbutton;
+      }
+      catch (Exception)
+      {
+      }
     }
 
     private void SenseHat_TemperatureChanged(object sender, EventArgs e)
@@ -361,6 +416,7 @@ namespace PiServer
     private ISenseHat SenseHat;
 
     private SenseHatState SenseHatNode;
+    private bool prevPushbuttonState;
     #endregion
   }
 }
