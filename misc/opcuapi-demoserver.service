@@ -1,0 +1,23 @@
+[Unit]
+Description=OPC-UA Pi Demo Server
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+
+Environment=COMPOSE_ENV_FILE=/srv/mkect/opcuapi/DemoServer/docker-compose.env
+Environment=COMPOSE_YML_FILE=/srv/mkect/opcuapi/DemoServer/docker-compose.yml
+
+ExecStart=docker-compose \
+  --env-file ${COMPOSE_ENV_FILE} \
+  --file ${COMPOSE_YML_FILE} \
+  up
+
+ExecStop=docker-compose \
+  --env-file ${COMPOSE_ENV_FILE} \
+  --file ${COMPOSE_YML_FILE} \
+  down
+
+[Install]
+WantedBy=multi-user.target
