@@ -106,7 +106,7 @@ namespace DemoClient
       client.Session.Browse(
         null,
         null,
-        ObjectIds.RootFolder,
+        ObjectIds.ObjectsFolder,
         0,
         BrowseDirection.Forward,
         ReferenceTypeIds.HierarchicalReferences,
@@ -143,7 +143,7 @@ namespace DemoClient
       foreach (var reference in references)
       {
         var browseName = $"{browsePath}/{reference.BrowseName.Name}";
-        if (nodePaths.Contains(browseName))
+        if (nodePaths.Contains(browseName) && !nodeMap.ContainsKey(browseName))
         {
           nodeMap.Add(browseName, ExpandedNodeId.ToNodeId(reference.NodeId, client.Session.NamespaceUris));
         }
