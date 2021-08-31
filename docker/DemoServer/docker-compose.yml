@@ -1,0 +1,7 @@
+services:
+  demoserver:
+    image: mkect/opcuapi-demoserver:${IMAGE_TAG}
+    ports:
+      - ${EXTERNAL_PORT}:${INTERNAL_PORT}
+    devices:
+      - ${I2C_DEVICE}:${I2C_DEVICE}
