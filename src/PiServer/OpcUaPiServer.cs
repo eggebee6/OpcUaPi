@@ -277,7 +277,11 @@ namespace PiServer
     #endregion
 
     #region Utility
-    public static async Task LaunchServer(OpcUaPiServer server, string configFile)
+    public static async Task LaunchServer(
+      OpcUaPiServer server,
+      string configFile,
+      X509Certificate2 certificate = null,
+      ICertificatePasswordProvider passwordProvider = null)
     {
       if (string.IsNullOrWhiteSpace(configFile))
       {
@@ -302,6 +306,12 @@ namespace PiServer
         }
 
         ApplicationConfiguration config = await app.LoadApplicationConfiguration(configFile, false);
+
+        if (certificate != null)
+        {
+          config.SecurityConfiguration.ApplicationCertificate = new CertificateIdentifier(certificate);
+          config.SecurityConfiguration.CertificatePasswordProvider = passwordProvider;
+        }
 
         bool haveAppCertificate = await app.CheckApplicationInstanceCertificate(false, 0);
         if (!haveAppCertificate)
