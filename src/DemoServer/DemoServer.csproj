@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="Iot.Device.Bindings" Version="1.5.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.17" />
   </ItemGroup>
