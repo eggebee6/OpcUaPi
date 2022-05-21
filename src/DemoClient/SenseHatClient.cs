@@ -16,12 +16,14 @@ namespace DemoClient
     public const string TemperatureSensorNode = "/SenseHat/Temperature sensor/Output";
     public const string PressureSensorNode = "/SenseHat/Pressure sensor/Output";
     public const string HumiditySensorNode = "/SenseHat/Humidity sensor/Output";
+    public const string JoystickNode = "/SenseHat/Four-direction joystick with pushbutton";
 
     private readonly List<string> nodePaths = new List<string>()
     {
       TemperatureSensorNode,
       PressureSensorNode,
-      HumiditySensorNode
+      HumiditySensorNode,
+      JoystickNode
     };
     private readonly Dictionary<string, NodeId> nodeMap = new Dictionary<string, NodeId>();
 
@@ -67,7 +69,8 @@ namespace DemoClient
       subscription = new Subscription()
       {
         PublishingEnabled = true,
-        PublishingInterval = 500
+        PublishingInterval = 500,
+        MaxNotificationsPerPublish = 1000
       };
 
       foreach (var key in nodeMap.Keys)
@@ -78,11 +81,40 @@ namespace DemoClient
           continue;
         }
 
-        var monitor = new MonitoredItem()
+        var selectClause = new SimpleAttributeOperandCollection(new SimpleAttributeOperand[]
         {
-          MonitoringMode = MonitoringMode.Reporting,
-          StartNodeId = id,
-          AttributeId = Attributes.Value
+          new SimpleAttributeOperand()
+          {
+            TypeDefinitionId = Opc.Ua.ObjectTypeIds.BaseEventType,
+            AttributeId = Attributes.NodeId
+          }
+        });
+
+        var whereClause = new ContentFilter();
+        whereClause.Push(FilterOperator.OfType, Opc.Ua.ObjectTypeIds.BaseEventType);
+
+        var monitor = key switch
+        {
+          JoystickNode => new MonitoredItem()
+          {
+            StartNodeId = id,
+            AttributeId = Attributes.EventNotifier,
+            SamplingInterval = 0,
+            QueueSize = 1000,
+            DiscardOldest = true,
+            Filter = new EventFilter()
+            {
+              SelectClauses = selectClause,
+              WhereClause = whereClause
+            }
+          },
+
+          _ => new MonitoredItem()
+          {
+            MonitoringMode = MonitoringMode.Reporting,
+            StartNodeId = id,
+            AttributeId = Attributes.Value
+          }
         };
 
         MonitoredItemNotificationEventHandler handler = key switch
@@ -90,6 +122,7 @@ namespace DemoClient
           TemperatureSensorNode => OnTemperatureChanged,
           PressureSensorNode => OnPressureChanged,
           HumiditySensorNode => OnHumidityChanged,
+          JoystickNode => OnJoystickEvent,
           _ => OnUnhandledChange
         };
         monitor.Notification += new MonitoredItemNotificationEventHandler(handler);
@@ -198,6 +231,38 @@ namespace DemoClient
       {
         Humidity = res;
       }
+    }
+
+    private void OnJoystickEvent(MonitoredItem item, MonitoredItemNotificationEventArgs evt)
+    {
+      EventFieldList eventFields = evt.NotificationValue as EventFieldList;
+      if (eventFields is null)
+      {
+        return;
+      }
+
+      StringBuilder builder = new StringBuilder();
+      builder.AppendLine("Pushbutton event");
+
+      foreach (var field in eventFields.EventFields)
+      {
+        if (field.Value is null)
+        {
+          continue;
+        }
+
+        if (field.TypeInfo.BuiltInType == BuiltInType.NodeId)
+        {
+          INode node = client.Session.NodeCache.Find((NodeId)field.Value);
+          builder.AppendLine($"  Node: {node}");
+        }
+        else
+        {        
+          builder.AppendLine($"  Value: {field}");
+        }
+      }
+
+      Log(builder.ToString());
     }
   }
 }
