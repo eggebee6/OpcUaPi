@@ -17,6 +17,8 @@ All the interesting parts:
 
 Don't forget to install the Sense HAT libraries: *apt get install sense-hat*
 
+A quick way to get started is to start the DemoServer locally, then run the DemoClient.  By default, the DemoServer will be listening at ocp.tcp://localhost:43101/UA/PiServer.  The *endpointUrl* command line parameter for the DemoClient specifies the endpoint the client should connect to, e.g. *dotnet run -- --endpointUrl opc.tcp://localhost:43101/UA/PiServer*
+
 ### The project
 The project includes libraries for an OPC UA client and an OPC UA server.  Two demo applications demonstrate the possible use of each.
 
